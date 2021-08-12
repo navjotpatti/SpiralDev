@@ -14,14 +14,13 @@ import java.util.ArrayList;
 
 public class Util {
 
-    public static final int PERMISSION_READ = 0;
+    public static final int PERMISSION_READ_GRANTED = 0;
+    public static ArrayList<VideoModelClass> tempList = new ArrayList<>();
 
-    public static ArrayList<VideoModelClass> videoList = new ArrayList<>();
-
-    public static boolean checkPermission(Activity context) {
+    public static boolean isPermissionGranted(Activity context) {
         int READ_EXTERNAL_PERMISSION = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE);
         if((READ_EXTERNAL_PERMISSION != PackageManager.PERMISSION_GRANTED)) {
-            ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_READ);
+            ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_READ_GRANTED);
             return false;
         }
         return true;
